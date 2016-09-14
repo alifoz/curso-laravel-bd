@@ -12,6 +12,7 @@
 */
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
+
     static $password;
 
     return [
@@ -20,4 +21,22 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
+
+});
+
+
+$factory->define(App\Example::class, function (Faker\Generator $faker) {
+
+    return [
+            'name' => $faker->name,
+            'email' => $faker->email,
+            'street' => $faker->streetName,
+            'street2' => $faker->streetSuffix,
+            'city' => $faker->region,
+            'state' => 'ab',
+            'number' => 12,
+            'birthday'=> '1990-01-01',
+            'postal' => '1234',
+    ];
+
 });
